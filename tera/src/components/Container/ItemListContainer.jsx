@@ -1,9 +1,8 @@
-import React from 'react'
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 
 export default function ItemListContainer({ welcome }) {
   return (
-      <Card style={ {width: '50%', margin: '10rem auto', backgroundColor: '#b8b8b8'}}>
+      <Card className="border-0" style={ {width: '50%', margin: '10rem auto', backgroundColor: '#b8b8b8'}}>
         <Card.Body>
             <Card.Title>
                 <h1>{welcome}</h1>
