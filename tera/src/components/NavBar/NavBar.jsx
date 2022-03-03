@@ -4,8 +4,7 @@ import Container from "react-bootstrap/Container";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import Widget from "../Widget/Widget";
 
 
 export default function NavBar() {
@@ -34,7 +33,7 @@ export default function NavBar() {
           </Nav>
           <Form className="d-flex">
             <Button  className="disabled border-0" variant="outline-dark">
-              <FontAwesomeIcon icon={faCartShopping} size="xl" />
+              <Widget />
             </Button>
             <Button variant="outline-dark">Carrito</Button>
           </Form>
