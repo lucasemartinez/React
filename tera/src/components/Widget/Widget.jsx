@@ -1,6 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import Stack from 'react-bootstrap/esm/Stack'
 
 export default function Widget() {
-  return  <FontAwesomeIcon icon={faCartShopping} size="xl" />
+  return  (
+    <>
+      <Stack direction="horizontal" gap={2}>
+        <FontAwesomeIcon icon={faCartShopping} size="xl" />
+      </Stack>
+    </>
+  )
 }
