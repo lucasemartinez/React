@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import getFetch from '../../helpers/gFetch'
-import ItemCount from '../Items/ItemCount';
+import Item from './Item';
+import Loading from '../Loading/Loading';
 
 
 
-export default function ItemListContainer({ welcome }) {    
+export default function ItemListContainer({ welcome }) {
 
-    const [checkOut, setCheckOut] = useState(1)
-    const [ loading, setLoading ] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [prods, setProds] = useState([])
-    
+
 
     useEffect(() => {
         getFetch // Simulacion de llamado a API
@@ -39,29 +38,25 @@ export default function ItemListContainer({ welcome }) {
                 </Card.Footer>
             </Card>
 
-            { loading ? <h2>Cargando</h2> 
-            :
-            <Container>
-                <Row>
-                {prods.map((prod) =>       
-                    <Col key={prod.id}>
-                        <Card className="p-3" >
-                            <Card.Title>{prod.title}</Card.Title>
-                            <Card.Body> 
-                                <Card.Text>
-                                    {prod.description}
-                                    <ItemCount stock={10} initial={1} onAdd={checkOut}/>
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                               {prod.price}
-                            </Card.Footer>
-                        </Card>
-                    </Col>                   
-                )}
-                </Row>
-            </Container>
-            }           
+            {
+                (loading)
+
+                    ?
+
+                    <Loading />
+
+                    :
+
+                    <Container>
+                        <Row>
+                            {prods.map((prod) =>
+                                <Col key={prod.id}>
+                                    <Item prod={prod} />
+                                </Col>
+                            )}
+                        </Row>
+                    </Container>
+            }
         </>
     )
 }

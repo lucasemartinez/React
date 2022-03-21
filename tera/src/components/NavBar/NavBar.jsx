@@ -5,38 +5,50 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Widget from "../Widget/Widget";
+import { NavLink } from "react-router-dom";
 
 
 export default function NavBar({componenteContainer}) {
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" >
         <Container fluid>
-          <Navbar.Brand href="#">AirCaption</Navbar.Brand>
+          <NavLink to='/' style={{ textDecoration: 'none' }}>
+            <Navbar.Brand href="#">AirCaption</Navbar.Brand>
+          </NavLink>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: '200px' }}
+              className="me-auto my-2 my-lg-0 navbar"
               navbarScroll
             >
-              <Nav.Link href="#action1">Inicio</Nav.Link>
-              <Nav.Link href="#action2">Drones</Nav.Link>
-              <NavDropdown title="Accesorios" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Baterias</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Helices</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Gimbals</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#">
-                  Todo
-                </NavDropdown.Item>
+              <NavLink className='navbar-NavLink' to="/">Inicio</NavLink>
+              <NavLink className='navbar-NavLink' to='category/drones'>Drones</NavLink>
+              <NavDropdown className='navbar-NavLink' title="Accesorios">
+                <NavDropdown.ItemText>
+                  <NavLink to='category/batteries' className='navbar-NavLink'>
+                    Baterias
+                  </NavLink>
+                </NavDropdown.ItemText>
+                <NavDropdown.ItemText>
+                  <NavLink to='category/propellers' className='navbar-NavLink'>
+                    Helices
+                  </NavLink>
+                </NavDropdown.ItemText>
+                <NavDropdown.ItemText>
+                  <NavLink to='category/gimbals' className='navbar-NavLink'>
+                    Gimbals
+                  </NavLink>
+                </NavDropdown.ItemText>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
-              <Button className="disabled border-0" variant="outline-dark">
-                <Widget />
-              </Button>
-              <Button variant="outline-dark">Carrito</Button>
+            
+              <NavLink to='/cart'>
+                <Button className="border-0 disabled" variant="outline-dark">
+                  <Widget />
+                </Button>
+              </NavLink>
             </Form>
           </Navbar.Collapse>
         </Container>
